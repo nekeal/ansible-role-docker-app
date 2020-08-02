@@ -1,0 +1,14 @@
+---
+- name: Converge
+  hosts: all
+  pre_tasks:
+    - name: Install necessary packages
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - gnupg2
+  tasks:
+    - name: "docker-app"
+      include_role:
+        name: docker-app

@@ -1,0 +1,3 @@
+---
+# tasks file for docker-app
+- include_tasks: install-docker.yml
