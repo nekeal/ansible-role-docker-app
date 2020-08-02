@@ -1,6 +1,21 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    - docker_images:
+        - name: alpine
+          pull: yes
+          source: pull
+          state: present
+          tag: 3.12
+        - name: sample-docker-image
+          source: build
+          build:
+            path: "/opt"
+            dockerfile: Dockerfile.sample
+            pull: yes
+          tag: "test"
+          state: present
   pre_tasks:
     - name: Install necessary packages
       apt:
@@ -8,6 +23,16 @@
           - apt-transport-https
           - ca-certificates
           - gnupg2
+    - name: Upload dockerfiles to remote host
+      copy:
+        src: "{{ item }}"
+        dest: /opt/
+      loop:
+        - Dockerfile.sample
+    - name: Install docker python library
+      pip:
+        name: docker
+        state: present
   tasks:
     - name: "docker-app"
       include_role:

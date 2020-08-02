@@ -1,0 +1,25 @@
+- name: "{{ docker_image.source | title }} docker image - {{ docker_image.name }}"
+  docker_image:
+    name: "{{ docker_image.name }}"
+    source: "{{ docker_image.source }}"
+    build: "{{ docker_image.build | default(omit) }}"
+    archive_path: "{{ docker_image.archive_path | default(omit) }}"
+    load_path: "{{ docker_image.load_path | default(omit) }}"  # Use with state C(present) to load an image from a .tar file.,Set I(source) to C(load) if you want to load the image. The option will be set automatically before Ansible 2.12 if this option is used (except if I(path) is specified as well, in which case building will take precedence). From Ansible 2.12 on, you have to set I(source) to C(load).
+    force_source: "{{ docker_image.force_source | default(omit) }}"  # Use with state C(present) to build, load or pull an image (depending on the value of the I(source) option) when the image already exists.
+    force_absent: "{{ docker_image.force_absent | default(omit) }}"  # Use with state I(absent) to un-tag and remove all images matching the specified name.
+    force_tag: "{{ docker_image.force_tag | default(omit) }}"
+    push: "{{ docker_image.push | default(omit) }}"
+    repository: "{{ docker_image.repository | default(omit) }}"
+    state: "{{ docker_image.state | default(omit) }}"
+    tag: "{{ docker_image.tag }}"
+    docker_host: "{{ docker_image.docker_host | default(docker_host_default) }}"
+    api_version: "{{ docker_image.api_version | default(docker_api_verison_default) }}"
+    timeout: "{{ docker_image.timeout | default(docker_timeout_default) }}"
+    ca_cert: "{{ docker_image.ca_cert | default(omit) }}"
+    client_cert: "{{ docker_image.client_cert | default(omit) }}"
+    client_key: "{{ docker_image.client_key | default(omit) }}"
+    ssl_version: "{{ docker_image.ssl_version | default(omit) }}"
+    tls: "{{ docker_image.tls | default(omit) }}"
+    tls_hostname: "{{ docker_image.tls_hostname | default(docker_tls_hostname_default) }}"
+    validate_certs: "{{ docker_image.validate_certs | default(omit) }}"
+    debug: "{{ docker_image.debug | default(false) }}"
