@@ -1,7 +1,13 @@
 ---
 # tasks file for docker-app
 - include_tasks: install-docker.yml
+
 - include_tasks: docker-image.yml
   loop: "{{ docker_images }}"
   loop_control:
     loop_var: docker_image
+
+- include_tasks: docker-container.yml
+  loop: "{{ docker_containers }}"
+  loop_control:
+    loop_var: docker_container

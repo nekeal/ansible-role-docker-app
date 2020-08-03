@@ -2,20 +2,33 @@
 - name: Converge
   hosts: all
   vars:
-    - docker_images:
-        - name: alpine
+    docker_images:
+      - name: alpine
+        pull: yes
+        source: pull
+        state: present
+        tag: 3.12
+      - name: sample-docker-image
+        source: build
+        build:
+          path: "/opt"
+          dockerfile: Dockerfile.sample
           pull: yes
-          source: pull
-          state: present
-          tag: 3.12
-        - name: sample-docker-image
-          source: build
-          build:
-            path: "/opt"
-            dockerfile: Dockerfile.sample
-            pull: yes
-          tag: "test"
-          state: present
+        tag: "test"
+        state: present
+    docker_containers:
+      - name: alpine
+        image: alpine:3.11
+        pull: yes
+        state: present
+        comparisons:
+          "*": strict
+      - name: nginx-alpine
+        image: nginx:1.19.1-alpine
+        state: started
+        published_ports:
+          - 80:80
+
   pre_tasks:
     - name: Install necessary packages
       apt:

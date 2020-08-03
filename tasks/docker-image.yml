@@ -4,9 +4,9 @@
     source: "{{ docker_image.source }}"
     build: "{{ docker_image.build | default(omit) }}"
     archive_path: "{{ docker_image.archive_path | default(omit) }}"
-    load_path: "{{ docker_image.load_path | default(omit) }}"  # Use with state C(present) to load an image from a .tar file.,Set I(source) to C(load) if you want to load the image. The option will be set automatically before Ansible 2.12 if this option is used (except if I(path) is specified as well, in which case building will take precedence). From Ansible 2.12 on, you have to set I(source) to C(load).
-    force_source: "{{ docker_image.force_source | default(omit) }}"  # Use with state C(present) to build, load or pull an image (depending on the value of the I(source) option) when the image already exists.
-    force_absent: "{{ docker_image.force_absent | default(omit) }}"  # Use with state I(absent) to un-tag and remove all images matching the specified name.
+    load_path: "{{ docker_image.load_path | default(omit) }}"
+    force_source: "{{ docker_image.force_source | default(omit) }}"
+    force_absent: "{{ docker_image.force_absent | default(omit) }}"
     force_tag: "{{ docker_image.force_tag | default(omit) }}"
     push: "{{ docker_image.push | default(omit) }}"
     repository: "{{ docker_image.repository | default(omit) }}"
