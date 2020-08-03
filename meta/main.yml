@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-
+  role_name: docker-app
   author: nekeal
   description: Role which installs and deploys containerized apllications
 
