@@ -16,10 +16,98 @@ docker_host_default: unix://var/run/docker.sock
 docker_tls_hostname_default: localhost
 docker_api_verison_default: auto
 docker_timeout_default: 60
-docker_ca_cert_default: omit
-docker_client_cert_default: omit
-docker_client_key_default: omit
-docker_ssl_version_default: omit
-docker_tls_default: omit
-docker_validate_certs_default: omit
-docker_debug_default: omit
+# docker_ca_cert_default: omit
+# docker_client_cert_default: omit
+# docker_client_key_default: omit
+# docker_ssl_version_default: omit
+# docker_tls_default: omit
+# docker_validate_certs_default: omit
+# docker_debug_default: omit
+
+#docker containers
+# docker_auto_remove_default: no
+# docker_blkio_weight_default: omit
+# docker_capabilities_default: []
+# docker_cap_drop_default: []
+# docker_cleanup_default: no
+# docker_command_default: omit
+# docker_comparisons_default: omit
+# docker_cpu_period_default: omit
+# docker_cpu_quota_default: omit
+# docker_cpuset_cpus_default: omit
+# docker_cpuset_mems_default: omit
+# docker_cpu_shares_default: omit
+# docker_detach_default: yes
+# docker_devices_default: []
+# docker_device_read_bps_default: []
+# docker_device_write_bps_default: []
+# docker_device_read_iops_default: []
+# docker_device_write_iops_default: []
+# docker_dns_opts_default: []
+# docker_dns_servers_default: []
+# docker_dns_search_domains_default: []
+# docker_domainname_default: omit
+# docker_env_default: {}
+# docker_env_file_default: omit
+# docker_entrypoint_default: []
+# docker_etc_hosts_default: {}
+# docker_exposed_ports_default: {}
+# docker_force_kill_default: no
+# docker_groups_default: []
+# docker_healthcheck_default: {}
+# docker_hostname_default: omit
+# docker_ignore_image_default: no
+# docker_image_default: omit
+# docker_init_default: no
+# docker_interactive_default: no
+# docker_ipc_mode_default: omit
+# docker_keep_volumes_default: yes
+# docker_kill_signal_default: omit
+# docker_kernel_memory_default: omit
+# docker_labels_default: {}
+# docker_links_default: []
+# docker_log_driver_default: json
+# docker_log_options_default: {}
+# docker_mac_address_default: omit
+# docker_memory_default: 0
+# docker_memory_reservation_default: omit
+# docker_memory_swap_default: omit
+# docker_memory_swappiness_default: omit
+# docker_mounts_default: []
+# docker_network_mode_default: omit
+# docker_networks_default: []
+# docker_userns_mode_default: omit
+# docker_networks_cli_compatible_default: yes
+# docker_oom_killer_default: omit
+# docker_oom_score_adj_default: omit
+# docker_output_logs_default: no
+# docker_paused_default: no
+# docker_pid_mode_default: omit
+# docker_pids_limit_default: omit
+# docker_privileged_default: no
+# docker_published_ports_default: []
+# docker_pull_default: no
+# docker_purge_networks_default: no
+# docker_read_only_default: no
+# docker_recreate_default: no
+# docker_restart_default: no
+# docker_restart_policy_default: omit
+# docker_restart_retries_default: omit
+# docker_runtime_default: omit
+# docker_shm_size_default: omit
+# docker_security_opts_default: []
+# docker_state_default: started
+# docker_stop_signal_default: omit
+# docker_stop_timeout_default: omit
+# docker_trust_image_content_default: no
+# docker_tmpfs_default: []
+# docker_tty_default: no
+# docker_ulimits_default: []
+# docker_sysctls_default: {}
+# docker_user_default: omit
+# docker_uts_default: omit
+# docker_volumes_default: []
+# docker_volume_driver_default: omit
+# docker_volumes_from_default: []
+# docker_working_dir_default: omit
+# docker_api_version_default: omit
