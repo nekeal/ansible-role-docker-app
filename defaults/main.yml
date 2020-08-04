@@ -111,3 +111,25 @@ docker_timeout_default: 60
 # docker_volumes_from_default: []
 # docker_working_dir_default: omit
 # docker_api_version_default: omit
+
+#specifies docker images to build/pull/remove
+docker_images: []
+#example:
+# name: alpine
+#   pull: yes
+#   source: pull
+#   state: present
+#   tag: 3.12
+
+# Specifies docker containers to create/stop/kill depending on set state
+docker_containers: []
+#example:
+# name: nginx-alpine
+#   image: nginx:1.19.1-alpine
+#   state: started
+#   published_ports:
+#     - 80:80
+#   mounts:
+#     - source: /root/
+#       target: /root/host_root
+#       type: bind

@@ -21,7 +21,20 @@ This variables control where should be docker installed from. You can overwrite 
 
 Defines name of docker service. Propably you will never change this.
 
+    docker_host_default: unix://var/run/docker.sock
+    docker_tls_hostname_default: localhost
+    docker_api_verison_default: auto
+    docker_timeout_default: 60
 
+Defines common vars used by `docker_image` and `docker_container` modules. You can set almost all default variables used by docker images and containers for example you don't want to specify `state` of docker container for each container, so you can set `docker_state_default` variable which will be used by each item in `docker_containers` list.
+
+    docker_images: []
+
+List of dicts containing configuration in same format as requires `docker_image` module. Each parameter which is provided in module is available. You can also set global default value for each image. List of available defaults is in `defaults/main.yml`
+
+docker_containers: []
+
+List of dicts containing configuration in same format as requires `docker_container` module. Each parameter which is provided in module is available. You can also set globally available default. List of defaults is in `defaults/main.yml`
 
 Dependencies
 ------------

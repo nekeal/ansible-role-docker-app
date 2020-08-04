@@ -28,6 +28,10 @@
         state: started
         published_ports:
           - 80:80
+        mounts:
+          - source: /root/
+            target: /root/host_root
+            type: bind
 
   pre_tasks:
     - name: Install necessary packages
