@@ -1,5 +1,30 @@
 ---
-- name: "Run pre-release commands"
+
+- debug: var=docker_container
+
+- name: Test another var name
+  set_fact:
+    docker_container: "{{ docker_containerr }}"
+
+- debug:
+    msg: "container {{ docker_container.name }} command {{ item }}"
+  loop: "{{ docker_container.pre_release_commands | default([]) }}"
+
+
+- name: Ensure pre-release command
+  command:
+    cmd: "echo {{ docker_container.name }}-pre-release{{ 10 | random }}"
+    # command: "{{ docker_container }}"
+  register: docker_command_result
+  changed_when: no
+  # changed_when: not command.not_changed_when_string_in_output in "j" #docker_command_result.container.Output
+  with_items: "{{ docker_container.pre_release_commands | default([]) }}"
+  # ignore_errors: yes
+  loop_control:
+    loop_var: command
+
+#
+- name: Run pre-release commands
   docker_container:
     name: "{{ docker_container.name }}-pre-release"
     image: "{{ docker_container.image }}"
@@ -16,9 +41,16 @@
     recreate: "{{ docker_container.recreate | default(docker_recreate_default) | default(omit) }}"
     user: "{{ docker_container.user | default(docker_user_default) | default(omit) }}"
     command: "{{ command }}"
+  register: docker_command_result
+  # changed_when: not command.not_changed_when_string_in_output in "j" #docker_command_result.container.Output
   loop: "{{ docker_container.pre_release_commands | default([]) }}"
+  # ignore_errors: yes
   loop_control:
-    loop_var: "command"
+    loop_var: command
+
+- debug: var=docker_container
+
+
 - name: "Run or stop docker container"
   docker_container:
     name: "{{ docker_container.name }}"
