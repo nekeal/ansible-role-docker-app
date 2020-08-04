@@ -1,6 +1,8 @@
 ---
 - name: Converge
   hosts: all
+  remote_user: ansible
+  become: yes
   vars:
     docker_images:
       - name: alpine
@@ -29,10 +31,11 @@
         published_ports:
           - 80:80
         mounts:
-          - source: /root/
-            target: /root/host_root
+          - source: /tmp/
+            target: /tmp/host_root
             type: bind
-
+        pre_release_commands:
+          - "touch /tmp/host_root/pre_release_part"
   pre_tasks:
     - name: Install necessary packages
       apt:

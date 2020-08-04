@@ -1,4 +1,24 @@
 ---
+- name: "Run pre-release commands"
+  docker_container:
+    name: "{{ docker_container.name }}-pre-release"
+    image: "{{ docker_container.image }}"
+    detach: no
+    cleanup: yes
+    state: started
+    volume_driver: "{{ docker_container.volume_driver | default(docker_volume_driver_default) | default(omit) }}"
+    volumes: "{{ docker_container.volumes | default(docker_volumes_default) | default(omit) }}"
+    mounts: "{{ docker_container.mounts | default(docker_mounts_default) | default(omit) }}"
+    env: "{{ docker_container.env | default(docker_env_default) | default(omit) }}"
+    env_file: "{{ docker_container.env_file | default(docker_env_file_default) | default(omit) }}"
+    network_mode: "{{ docker_container.network_mode | default(docker_network_mode_default) | default(omit) }}"
+    networks: "{{ docker_container.networks | default(docker_networks_default) | default(omit) }}"
+    recreate: "{{ docker_container.recreate | default(docker_recreate_default) | default(omit) }}"
+    user: "{{ docker_container.user | default(docker_user_default) | default(omit) }}"
+    command: "{{ command }}"
+  loop: "{{ docker_container.pre_release_commands | default([]) }}"
+  loop_control:
+    loop_var: "command"
 - name: "Run or stop docker container"
   docker_container:
     name: "{{ docker_container.name }}"
@@ -10,6 +30,7 @@
     working_dir: "{{ docker_container.working_dir | default(docker_working_dir_default) | default(omit) }}"
     volume_driver: "{{ docker_container.volume_driver | default(docker_volume_driver_default) | default(omit) }}"
     volumes: "{{ docker_container.volumes | default(docker_volumes_default) | default(omit) }}"
+    mounts: "{{ docker_container.mounts | default(docker_mounts_default) | default(omit) }}"
     detach: "{{ docker_container.detach | default(docker_detach_default) | default(omit) }}"
     env: "{{ docker_container.env | default(docker_env_default) | default(omit) }}"
     env_file: "{{ docker_container.env_file | default(docker_env_file_default) | default(omit) }}"
@@ -61,7 +82,6 @@
     memory_reservation: "{{ docker_container.memory_reservation | default(docker_memory_reservation_default) | default(omit) }}"
     memory_swap: "{{ docker_container.memory_swap | default(docker_memory_swap_default) | default(omit) }}"
     memory_swappiness: "{{ docker_container.memory_swappiness | default(docker_memory_swappiness_default) | default(omit) }}"
-    mounts: "{{ docker_container.mounts | default(docker_mounts_default) | default(omit) }}"
     networks_cli_compatible: "{{ docker_container.networks_cli_compatible | default(docker_networks_cli_compatible_default) | default(omit) }}"
     userns_mode: "{{ docker_container.userns_mode | default(docker_userns_mode_default) | default(omit) }}"
     oom_killer: "{{ docker_container.oom_killer | default(docker_oom_killer_default) | default(omit) }}"
