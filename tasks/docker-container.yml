@@ -1,5 +1,5 @@
 ---
-- name: Run pre-release commands
+- name: "Run pre-release commands for {{ container.name }}"
   docker_container:
     name: "{{ container.name }}-pre-release"
     image: "{{ container.image }}"
@@ -17,16 +17,12 @@
     user: "{{ container.user | default(docker_user_default) | default(omit) }}"
     command: "{{ command.command }}"
   register: docker_command_result
-  changed_when: not command.not_changed_when_string_in_output | default('') in docker_command_result.container.Output | lower
+  changed_when: not command.not_changed_when_string_in_output in docker_command_result.container.Output | lower #docker_command_result.container.Output | lower
   loop: "{{ container.pre_release_commands | default([]) }}"
-  ignore_errors: yes
   loop_control:
     loop_var: command
 
-- debug: var=docker_command_result
-
-
-- name: "Run or stop docker container"
+- name: "Run or stop docker container - {{ container.name }}"
   docker_container:
     name: "{{ container.name }}"
     image: "{{ container.image | default(docker_image_default) | default(omit) }}"
@@ -126,7 +122,7 @@
     validate_certs: "{{ container.validate_certs | default(docker_validate_certs_default) | default(omit) }}"
     debug: "{{ container.debug | default(docker_debug_default) | default(omit) }}"
 
-- name: Run post-release commands
+- name: "Run post-release commands for {{ container.name }}"
   docker_container:
     name: "{{ container.name }}-post-release"
     image: "{{ container.image }}"
@@ -144,8 +140,7 @@
     user: "{{ container.user | default(docker_user_default) | default(omit) }}"
     command: "{{ command.command }}"
   register: docker_command_result
-  changed_when: not command.not_changed_when_string_in_output | default('') in docker_command_result.container.Output | lower
+  changed_when: not command.not_changed_when_string_in_output in docker_command_result.container.Output | lower
   loop: "{{ container.post_release_commands | default([]) }}"
-  ignore_errors: yes
   loop_control:
     loop_var: command
