@@ -35,7 +35,13 @@
             target: /tmp/host_root
             type: bind
         pre_release_commands:
-          - "touch /tmp/host_root/pre_release_part"
+          - command: "touch /tmp/host_root/pre_release_part"
+            not_changed_when_string_in_output: ""
+          - command: "echo 'Not changed'"
+            not_changed_when_string_in_output: "not changed"
+        post_release_commands:
+          - command: "touch /tmp/host_root/post_release_part"
+            not_changed_when_string_in_output: ""
   pre_tasks:
     - name: Install necessary packages
       apt:
