@@ -21,6 +21,9 @@
   loop: "{{ container.pre_release_commands | default([]) }}"
   loop_control:
     loop_var: command
+  tags:
+    - docker
+    - docker_image
 
 - name: "Run or stop docker container - {{ container.name }}"
   docker_container:
@@ -121,6 +124,9 @@
     tls: "{{ container.tls | default(docker_tls_default) | default(omit) }}"
     validate_certs: "{{ container.validate_certs | default(docker_validate_certs_default) | default(omit) }}"
     debug: "{{ container.debug | default(docker_debug_default) | default(omit) }}"
+  tags:
+    - docker
+    - docker_image
 
 - name: "Run post-release commands for {{ container.name }}"
   docker_container:
@@ -144,3 +150,6 @@
   loop: "{{ container.post_release_commands | default([]) }}"
   loop_control:
     loop_var: command
+  tags:
+    - docker
+    - docker_container

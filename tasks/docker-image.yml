@@ -23,3 +23,6 @@
     tls_hostname: "{{ docker_image.tls_hostname | default(docker_tls_hostname_default) }}"
     validate_certs: "{{ docker_image.validate_certs | default(omit) }}"
     debug: "{{ docker_image.debug | default(false) }}"
+  tags:
+    - docker
+    - docker_image
