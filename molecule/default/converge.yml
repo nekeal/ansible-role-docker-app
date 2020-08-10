@@ -4,7 +4,7 @@
   remote_user: ansible
   become: yes
   vars:
-    git_repositories:
+    docker_app_git_repositories:
       - repo: https://github.com/nekeal/simplest-docker-project
         dest: /tmp/simplest-docker-project
     docker_images:

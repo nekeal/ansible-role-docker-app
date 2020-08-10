@@ -45,7 +45,7 @@ docker_containers: []
 #     - source: /root/
 #       target: /root/host_root
 #       type: bind
-git_repositories: []
+docker_app_git_repositories: []
 #example:
 # - repo: https://github.com/nekeal/simplest-docker-project
 #   dest: /tmp/simplest-docker-project

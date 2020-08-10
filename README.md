@@ -36,7 +36,7 @@ List of dicts containing configuration in same format as requires `docker_image`
 
 List of dicts containing configuration in same format as requires `docker_container` module. Each parameter which is provided in module is available. You can also set globally available default.
 
-    git_repositories: []
+    docker_app_git_repositories: []
 
 List of repositories to clone. You can use each argument provided by git module. You can also set default for every repo of a list with the folllowing convention:
 `git_<argument_name>_default`, where `argument_name` is any argument in the git module.

@@ -5,7 +5,7 @@
     - docker
     - docker_install
 - include_tasks: git-repositories.yml
-  loop: "{{ docker_app_git_repositories | default([1]) }}"
+  loop: "{{ docker_app_git_repositories | default([]) }}"
   loop_control:
     loop_var: repository
   tags:

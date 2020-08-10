@@ -35,6 +35,7 @@
     group: "{{ repository.group | default(repository.owner) }}"
     recurse: yes
   changed_when: false
+  when: repository.owner is defined
   tags:
     - docker_app
     - git
