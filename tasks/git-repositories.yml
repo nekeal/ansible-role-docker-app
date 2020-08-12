@@ -13,7 +13,7 @@
     force: "{{ repository.force | default(git_force_default) | default(omit) }}"
     depth: "{{ repository.depth | default(git_depth_default) | default(omit) }}"
     clone: "{{ repository.clone | default(git_clone_default) | default(omit) }}"
-    update: "{{ repository.update | default(git_update_default) | default(omit) }}"
+    update: "{{ repository.update_repo | default(git_update_repo_default) | default(omit) }}"
     executable: "{{ repository.executable | default(git_executable_default) | default(omit) }}"
     bare: "{{ repository.bare | default(git_bare_default) | default(omit) }}"
     umask: "{{ repository.umask | default(git_umask_default) | default(omit) }}"

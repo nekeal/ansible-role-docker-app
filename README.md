@@ -41,6 +41,8 @@ List of dicts containing configuration in same format as requires `docker_contai
 List of repositories to clone. You can use each argument provided by git module. You can also set default for every repo of a list with the folllowing convention:
 `git_<argument_name>_default`, where `argument_name` is any argument in the git module.
 
+**There is one exception: `update` argument. Due to conflict with builtin method `update` of dict it is renamed to `update_repo`!**
+
 Dependencies
 ------------
 
