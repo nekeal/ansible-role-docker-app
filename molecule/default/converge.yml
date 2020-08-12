@@ -4,6 +4,9 @@
   remote_user: ansible
   become: yes
   vars:
+    docker_app_git_repositories:
+      - repo: https://github.com/nekeal/simplest-docker-project
+        dest: /tmp/simplest-docker-project
     docker_images:
       - name: alpine
         pull: yes
@@ -89,11 +92,6 @@
       pip:
         name: docker
         state: present
-    - name: Clone sample django project
-      git:
-        repo: https://github.com/nekeal/simplest-docker-project
-        dest: /tmp/simplest-docker-project
-        version: master
   tasks:
     - name: "docker-app"
       include_role:

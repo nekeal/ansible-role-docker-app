@@ -4,6 +4,15 @@
   tags:
     - docker
     - docker_install
+- include_tasks: git-repositories.yml
+  loop: "{{ docker_app_git_repositories | default([]) }}"
+  loop_control:
+    loop_var: repository
+  tags:
+    - docker_app
+    - git
+    - git_perm
+
 
 - include_tasks: docker-image.yml
   loop: "{{ docker_images }}"
