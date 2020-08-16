@@ -19,7 +19,7 @@
   register: docker_command_result
   changed_when:
     - docker_command_result.containers is defined
-    - not command.not_changed_when_string_in_output in docker_command_result.container.Output | lower #docker_command_result.container.Output | lower
+    - not command.not_changed_when_string_in_output in docker_command_result.container.Output | lower
   loop: "{{ container.pre_release_commands | default([]) }}"
   loop_control:
     loop_var: command
