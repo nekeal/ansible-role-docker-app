@@ -7,6 +7,12 @@
     docker_app_git_repositories:
       - repo: https://github.com/nekeal/simplest-docker-project
         dest: /tmp/simplest-docker-project
+    docker_app_create_directories:
+      - root: /tmp
+        owner: root
+        directories:
+          - dir1
+          - dir2
     docker_images:
       - name: alpine
         pull: yes
@@ -92,7 +98,5 @@
       pip:
         name: docker
         state: present
-  tasks:
-    - name: "docker-app"
-      include_role:
-        name: docker-app
+  roles:
+    - docker-app

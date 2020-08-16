@@ -1,4 +1,5 @@
 """Role testing files using testinfra."""
+import pytest
 import requests
 
 
@@ -27,3 +28,10 @@ def test_django_is_accessible(host):
     r = requests.get("http://localhost:8000")
     r.raise_for_status()
     assert b"The install worked successfully! Congratulations!" in r.content
+
+
+@pytest.mark.parametrize('directory', ('/tmp/dir1', '/tmp/dir2'))
+def test_directories_are_created(host, directory):
+    directory = host.file(directory)
+    assert directory.exists
+    assert directory.user == 'root'
