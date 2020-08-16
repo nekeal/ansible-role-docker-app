@@ -1,4 +1,10 @@
 ---
+- name: Ensure that python docker library is installed
+  pip:
+    name: docker
+    state: present
+  tags:
+    - docker
 
 - name: Ensure old docker versions are removed
   apt:
