@@ -28,14 +28,24 @@ Defines name of docker service. Propably you will never change this.
 
 Define common vars used by `docker_image` and `docker_container` modules. You can set almost all default variables used by docker images and containers.For example you don't want to specify `state` of docker container for each container, so you can set `docker_state_default` variable which will be used by each item in `docker_containers` list.
 
-    docker_registry_username:
-    docker_registry_password:
+    docker_registry_state: present
+    docker_registry_username: user
+    docker_registry_password: password
 
-These vars define minimal configuration for `docker_login` module. This role currently supports only login to single registry. Howewer you can specify any attribute allowed by `docker_login` according to the following rule
+These vars define minimal configuration for `docker_login` module. If you want to use
+this functionality you must explicitly define `docker_registry_state`. This role
+currently supports only login to single registry. Howewer you can specify
+any attribute allowed by `docker_login` according to the following rule
 
 `docker_registry_<attribute_name>`
 
 **But there is one exception: `docker_registry_url` which does not have double "registry" in the name for convenience**
+
+    docker_registry_users: [root]
+
+Specify which local users should have credentials stored in their home directory.
+By default only root gets logged in.
+
 
     docker_images: []
 
