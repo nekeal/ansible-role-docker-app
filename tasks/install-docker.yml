@@ -71,6 +71,7 @@
     tls: "{{ docker_registry_tls | default(docker_tls_default) | default(omit) }}"
     validate_certs: "{{ docker_registry_validate_certs | default(docker_validate_certs_default) | default(omit) }}"
     debug: "{{ docker_registry_debug | default(docker_debug_default) | default(omit) }}"
+  become: yes
   become_user: "{{ item }}"
   loop: "{{ docker_registry_users | default([root]) }}"
   when: docker_registry_state is defined
