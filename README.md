@@ -26,7 +26,10 @@ Defines name of docker service. Propably you will never change this.
     docker_api_verison_default: auto
     docker_timeout_default: 60
 
-Define common vars used by `docker_image` and `docker_container` modules. You can set almost all default variables used by docker images and containers.For example you don't want to specify `state` of docker container for each container, so you can set `docker_state_default` variable which will be used by each item in `docker_containers` list.
+Define common vars used by `docker_image` and `docker_container` modules. You can set almost all default
+variables used by docker images and containers. For example you don't want to specify `state` of docker
+container for each container, so you can set `docker_state_default` variable which will be used by each item
+in `docker_containers` list.
 
     docker_registry_state: present
     docker_registry_username: user
@@ -34,7 +37,7 @@ Define common vars used by `docker_image` and `docker_container` modules. You ca
 
 These vars define minimal configuration for `docker_login` module. If you want to use
 this functionality you must explicitly define `docker_registry_state`. This role
-currently supports only login to single registry. Howewer you can specify
+currently supports only login to single registry. However you can specify
 any attribute allowed by `docker_login` according to the following rule
 
 `docker_registry_<attribute_name>`
