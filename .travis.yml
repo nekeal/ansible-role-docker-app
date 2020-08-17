@@ -34,6 +34,7 @@ install:
   - printf '[defaults]\nroles_path=../' >ansible.cfg
 
 script:
+  - molecule --version
   - molecule lint
   - molecule test
 
