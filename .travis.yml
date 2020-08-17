@@ -8,7 +8,7 @@ sudo: required
 
 env:
   global:
-    - ROLE_NAME: docker-app
+    - ROLE_NAME: docker_app
   matrix:
     - MOLECULE_DISTRIBUTION: ubuntu18
     - MOLECULE_DISTRIBUTION: ubuntu20

@@ -99,4 +99,4 @@
         name: docker
         state: present
   roles:
-    - docker-app
+    - docker_app
