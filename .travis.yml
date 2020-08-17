@@ -25,7 +25,7 @@ install:
   - mv "$PWD" "${PWD%/*}/$ROLE_NAME"
   # Install ansible
   # - pip install -r requirements.txt
-  - pip install yamllint==1.23.0 ansible
+  - pip install yamllint==1.23.0 ansible molecule
 
   # Check ansible version
   - ansible --version
@@ -34,6 +34,7 @@ install:
   - printf '[defaults]\nroles_path=../' >ansible.cfg
 
 script:
+  - molecule verify
   - molecule test
 
 notifications:
