@@ -4,6 +4,7 @@
     name: docker
     state: present
   tags:
+    - docker_app
     - docker
 
 - name: Ensure old docker versions are removed
@@ -13,6 +14,7 @@
       - docker-engine
     state: absent
   tags:
+    - docker_app
     - docker
     - docker_install
 
@@ -22,6 +24,7 @@
     id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
     state: present
   tags:
+    - docker_app
     - docker
     - docker_install
 
@@ -31,6 +34,7 @@
     update_cache: yes
     state: present
   tags:
+    - docker_app
     - docker
     - docker_install
 
@@ -39,6 +43,7 @@
     name: "{{ docker_apt_package_name }}"
     state: present
   tags:
+    - docker_app
     - docker
     - docker_install
 
@@ -48,6 +53,7 @@
     enabled: yes
     state: started
   tags:
+    - docker_app
     - docker
     - docker_install
 
@@ -76,5 +82,6 @@
   loop: "{{ docker_registry_users | default(['root']) }}"
   when: docker_registry_state is defined
   tags:
+    - docker_app
     - docker
     - docker_login

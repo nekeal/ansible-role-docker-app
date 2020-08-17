@@ -24,5 +24,6 @@
     validate_certs: "{{ docker_image.validate_certs | default(omit) }}"
     debug: "{{ docker_image.debug | default(false) }}"
   tags:
+    - docker_app
     - docker
     - docker_image

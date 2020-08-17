@@ -2,6 +2,7 @@
 # tasks file for docker-app
 - include_tasks: install-docker.yml
   tags:
+    - docker_app
     - docker
     - docker_install
     - docker_login
@@ -16,7 +17,7 @@
   tags:
     - docker_app
     - docker
-    - directories
+    - docker_app_directories
 
 - include_tasks: git-repositories.yml
   loop: "{{ docker_app_git_repositories | default([]) }}"
@@ -33,6 +34,7 @@
   loop_control:
     loop_var: docker_image
   tags:
+    - docker_app
     - docker
     - docker_image
 
@@ -41,5 +43,6 @@
   loop_control:
     loop_var: container
   tags:
+    - docker_app
     - docker
     - docker_container
