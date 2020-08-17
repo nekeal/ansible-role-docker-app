@@ -25,7 +25,7 @@ install:
   - mv "$PWD" "${PWD%/*}/$ROLE_NAME"
   # Install ansible
   # - pip install -r requirements.txt
-  - pip install -r yamllint==1.23.0
+  - pip install yamllint==1.23.0
 
   # Check ansible version
   - ansible --version
